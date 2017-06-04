@@ -71,6 +71,26 @@ function deal(deck, players) {
   return players
 }
 
+function sumHand(hand) {
+  return hand[0].type.value + hand[1].type.value
+}
+
+function printHands(game) {
+
+  console.log(
+    `Playing a game of Blackjack with ${game.filter( player => !player.isDealer ).length} players!`
+  )
+  game.forEach( (player, index) => {
+    const playerName = player.isDealer ? `Dealer` : `Player ${index}`
+
+    console.log(
+      `${playerName} has the ${player.hand[0].type.displayName} of ${player.hand[0].suit}` +
+      ` and the ${player.hand[1].type.displayName} of ${player.hand[1].suit}.` +
+      ` (total = ${sumHand(player.hand)})`
+    )
+  })
+}
+
 shuffle(deck)
 const game = deal(deck, players)
-console.log(game)
+printHands(game)
