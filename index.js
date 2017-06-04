@@ -63,6 +63,14 @@ function createDealer() {
 
 players.push(createDealer())
 
-console.log(players)
+function deal(deck, players) {
+  for (var i = 0; i < players.length; i ++) {
+    players[i].hand.push(deck.pop())
+    players[i].hand.push(deck.pop())
+  }
+  return players
+}
 
 shuffle(deck)
+const game = deal(deck, players)
+console.log(game)
