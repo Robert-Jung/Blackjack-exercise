@@ -91,6 +91,30 @@ function printHands(game) {
   })
 }
 
+function findWinner(game) {
+  let winner = null
+
+  game.forEach( (player, index) => {
+    player.id = index
+
+    if (!winner) {
+      winner = player
+      return
+    }
+
+    if (sumHand(player.hand) > sumHand(winner.hand)) {
+      winner = player
+    }
+  })
+
+  const winnerName = winner.isDealer ? `Dealer` : `Player ${winner.id}`
+
+  console.log(
+    `${winnerName} is the winner with ${sumHand(winner.hand)}!`
+  )
+}
+
 shuffle(deck)
 const game = deal(deck, players)
 printHands(game)
+findWinner(game)
