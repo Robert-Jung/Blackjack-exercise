@@ -41,5 +41,28 @@ function shuffle(deck) {
   return deck
 }
 
+const playerCount = 4
+const players = []
+
+function createPlayer() {
+  return {
+    hand: []
+  }
+}
+
+for (var i = 0; i < playerCount; i++) {
+  players.push(createPlayer())
+}
+
+function createDealer() {
+  return {
+      hand: [],
+      isDealer: true
+  }
+}
+
+players.push(createDealer())
+
+console.log(players)
+
 shuffle(deck)
-console.log(deck)
