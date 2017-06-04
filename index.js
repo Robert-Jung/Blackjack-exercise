@@ -28,4 +28,18 @@ suits.forEach( (suit) => {
   types.forEach( (type) => deck.push({ type, suit }) )
 })
 
+function shuffle(deck) {
+  var length = deck.length - 1
+  var toSwap
+  var temp
+  for (i = length; i > 0; i--) {
+    toSwap = Math.floor(Math.random() * i)
+    temp = deck[i]
+    deck[i] = deck[toSwap]
+    deck[toSwap] = temp
+  }
+  return deck
+}
+
+shuffle(deck)
 console.log(deck)
