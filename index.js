@@ -107,11 +107,19 @@ function findWinner(game) {
     }
   })
 
-  const winnerName = winner.isDealer ? `Dealer` : `Player ${winner.id}`
+  var highestScore = sumHand(winner.hand)
 
-  console.log(
-    `${winnerName} is the winner with ${sumHand(winner.hand)}!`
-  )
+  game.map((player, index) => {
+    player.id = index
+    if (highestScore === sumHand(player.hand)) {
+
+      let winnerName = player.id.isDealer? `Dealer` : `Player ${player.id}`
+
+      console.log(
+        `${winnerName} is the winner with ${sumHand(winner.hand)}!`
+      )
+    }
+  })
 }
 
 shuffle(deck)
